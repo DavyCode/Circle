@@ -2,12 +2,25 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       ejs = require('ejs'),
       http = require('http'),
+      cookieParser = require('cookie-parser'),
+      validator = require('express-validator'),
+      session = require('express-session'),
+      MongoStore = require('connect-mongo')(session),
+      mongoose = require('mongoose'),
+      flash = require('connect-flash'),
+      passport = require('passport'),
       container = require('./container'),
       keys = require('./config/keys'),
       PORT = process.env.PORT || keys.Port;
 
 
 container.resolve(function(users) {
+
+  mongoose.Promise = global.Promise;
+  mongoose.connect(keys.mongoURI, (err) => {
+    (err) ? console.error(err, 'Error Connecting to Database!'): console.log('DB Connected. Build Something Awesome!');
+    });
+
   const app = SetupExpress();
   
   function SetupExpress() {
@@ -16,6 +29,7 @@ container.resolve(function(users) {
     server.listen(PORT, () => {
       console.log(`***Server up on port ${PORT}***`)
     });
+    //invoke configure express
     ConfigureExpress(app);
 
       //SETUP ROUTER
@@ -28,9 +42,25 @@ container.resolve(function(users) {
 
   function ConfigureExpress(app) {
     app.use(express.static('public'));
+    app.use(cookieParser());
     app.set('view engine', 'ejs');
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
+    
+    app.use(validator());
+    app.use(session({
+      secret: keys.sessionSecret,
+      resave: true,
+      saveUninitialized: true,
+      store: new MongoStore({
+        mongooseConnection: mongoose.connection
+      })
+    }));
+    app.use(flash());
+
+    app.use(passport.initialize());
+    app.use(passport.session());
+
   }
 
 });
