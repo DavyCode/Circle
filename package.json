@@ -4,7 +4,7 @@
   "description": "social circle app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "Azemoh Paul",
   "license": "MIT",
@@ -13,6 +13,7 @@
     "dependable": "^1.1.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "express-promise-router": "^3.0.1",
     "lodash": "^4.17.4"
   }
 }
