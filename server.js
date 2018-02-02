@@ -14,7 +14,7 @@ const express = require('express'),
       PORT = process.env.PORT || keys.Port;
 
 
-container.resolve(function(users) {
+container.resolve(function(users, _) {
 
   mongoose.Promise = global.Promise;
   mongoose.connect(keys.mongoURI, (err) => {
@@ -41,6 +41,9 @@ container.resolve(function(users) {
 
 
   function ConfigureExpress(app) {
+    require('./passport/passport-local')
+
+
     app.use(express.static('public'));
     app.use(cookieParser());
     app.set('view engine', 'ejs');
@@ -60,6 +63,8 @@ container.resolve(function(users) {
 
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.locals._ = _;
 
   }
 
