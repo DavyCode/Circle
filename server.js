@@ -16,58 +16,61 @@ const express = require('express'),
 
 container.resolve(function(users, _) {
 
-  mongoose.Promise = global.Promise;
-  mongoose.connect(keys.mongoURI, (err) => {
-    (err) ? console.error(err, 'Error Connecting to Database!'): console.log('DB Connected. Build Something Awesome!');
-    });
+    mongoose.Promise = global.Promise;
+    mongoose.connect(keys.mongoURI, (err) => {
+      (err) ? console.error(err, 'Error Connecting to Database!'): console.log('DB Connected. Build Something Awesome!');
+      });
 
-  const app = SetupExpress();
+    const app = SetupExpress();
   
-  function SetupExpress() {
-    const app = express();
-    const server = http.createServer(app);
-    server.listen(PORT, () => {
-      console.log(`***Server up on port ${PORT}***`)
-    });
-    //invoke configure express
-    ConfigureExpress(app);
+    function SetupExpress() {
+      const app = express();
+      const server = http.createServer(app);
+      server.listen(PORT, () => {
+        console.log(`***Server up on port ${PORT}***`)
+      });
+      //invoke configure express
+      ConfigureExpress(app);
 
-      //SETUP ROUTER
-    const router = require('express-promise-router')();
-    users.SetRouting(router);
+        //SETUP ROUTER
+      const router = require('express-promise-router')();
+      users.SetRouting(router);
 
-    app.use(router);
-  }
-
-
-  function ConfigureExpress(app) {
-    require('./passport/passport-local')
+      app.use(router);
+    }
 
 
-    app.use(express.static('public'));
-    app.use(cookieParser());
-    app.set('view engine', 'ejs');
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}));
-    
-    app.use(validator());
-    app.use(session({
-      secret: keys.sessionSecret,
-      resave: true,
-      saveUninitialized: true,
-      store: new MongoStore({
-        mongooseConnection: mongoose.connection
-      })
-    }));
-    app.use(flash());
+    function ConfigureExpress(app) {
+      require('./passport/passport-local');
+      require('./passport/passport-google');
+      require('./passport/passport-facebook');
+      
 
-    app.use(passport.initialize());
-    app.use(passport.session());
 
-    app.locals._ = _;
+      app.use(express.static('public'));
+      app.use(cookieParser());
+      app.set('view engine', 'ejs');
+      app.use(bodyParser.json());
+      app.use(bodyParser.urlencoded({extended: true}));
+      
+      app.use(validator());
+      app.use(session({
+        secret: keys.sessionSecret,
+        resave: true,
+        saveUninitialized: true,
+        store: new MongoStore({
+          mongooseConnection: mongoose.connection
+        })
+      }));
+      app.use(flash());
 
-  }
+      app.use(passport.initialize());
+      app.use(passport.session());
 
+      //locals
+      app.locals._ = _;
+
+    }
 });
 
  

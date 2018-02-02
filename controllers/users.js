@@ -6,7 +6,11 @@ module.exports = function(_, passport, User) {
       // GET ROUTES
       router.get('/', this.indexPage);
       router.get('/signup', this.getSignUp);
-      router.get('/home', this.homePage)
+      router.get('/home', this.homePage);
+      router.get('/auth/facebook', this.getFacebookLogin);
+      router.get('/auth/facebook/callback', this.facebookLogin);
+      router.get('/auth/google', this.getGoogleLogin);
+      router.get('/auth/google/callback', this.googleLogin);
 
 
       //AUTH POST ROUTES
@@ -39,10 +43,36 @@ module.exports = function(_, passport, User) {
       failureFlash: true
     }),
 
+    //Facebook Auth
+    getFacebookLogin : passport.authenticate('facebook',{
+      scope: 'email'
+    }),
+
+    facebookLogin: passport.authenticate('facebook', {
+      successRedirect: '/home',
+      failureRedirect: '/signup',
+      failureFlash: true
+    }),
+
+    //Google Auth
+    getGoogleLogin : passport.authenticate('google',{
+      // scope: ['profile','email']
+      scope: ['https://www.googleapis.com/auth/plus.login',
+        'https://www.googleapis.com/auth/plus.profile.emails.read'
+      ]
+    }),
+
+    googleLogin: passport.authenticate('google', {
+      successRedirect: '/home',
+      failureRedirect: '/signup',
+      failureFlash: true
+    }),
+
     homePage: function(req, res) {
       return res.render('home')
     }
 
+    
 
   }
 }
