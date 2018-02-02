@@ -14,26 +14,28 @@ module.exports = function(_, passport, User) {
       router.post('/', User.LoginValidation, this.postLogin)
     },
 
-
+    //Login
     indexPage: function(req, res) {
       const errors = req.flash('error');
       return res.render('index', {title: 'Circle | Login', messages: errors, hasErrors: errors.length > 0})
     },
-
-    getSignUp: function(req, res) {
-      const errors = req.flash('error');
-      return res.render('auth/signup', {title: 'Circle | SignUp', messages: errors, hasErrors: errors.length > 0});
-    },
-    //Signup  
-    postSignUp: passport.authenticate('local.auth', {
-      successRedirect: '/home',
-      failureRedirect: '/signup',
-      failureFlash: true
-    }),
     //Login
     postLogin: passport.authenticate('local.authLogin', {
       successRedirect: '/home',
       failureRedirect: '/',
+      failureFlash: true
+    }),
+
+    //get signup
+    getSignUp: function(req, res) {
+      const errors = req.flash('error');
+      return res.render('auth/signup', {title: 'Circle | SignUp', messages: errors, hasErrors: errors.length > 0});
+    },
+
+    //Signup  
+    postSignUp: passport.authenticate('local.auth', {
+      successRedirect: '/home',
+      failureRedirect: '/signup',
       failureFlash: true
     }),
 
