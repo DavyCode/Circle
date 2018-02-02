@@ -6,7 +6,9 @@ module.exports = function(_, passport, User) {
       // GET ROUTES
       router.get('/', this.indexPage);
       router.get('/signup', this.getSignUp);
-      router.get('/home', this.homePage)
+      router.get('/home', this.homePage);
+      router.get('/auth/facebook', this.getFacebookLogin)
+      router.get('/auth/facebook/callback', this.facebooklogin)
 
 
       //AUTH POST ROUTES
@@ -39,10 +41,22 @@ module.exports = function(_, passport, User) {
       failureFlash: true
     }),
 
+    //Facebook Auth
+    getFacebookLogin : passport.authenticate('facebook',{
+      scope: 'email'
+    }),
+
+    facebooklogin: passport.authenticate('facebook', {
+      successRedirect: '/home',
+      failureRedirect: '/signup',
+      failureFlash: true
+    }),
+
     homePage: function(req, res) {
       return res.render('home')
     }
 
+    
 
   }
 }
