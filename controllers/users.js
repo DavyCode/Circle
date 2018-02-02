@@ -26,7 +26,7 @@ module.exports = function(_, passport, User) {
       failureFlash: true
     }),
 
-    //get signup
+    //Signup
     getSignUp: function(req, res) {
       const errors = req.flash('error');
       return res.render('auth/signup', {title: 'Circle | SignUp', messages: errors, hasErrors: errors.length > 0});

@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "8.9.3"
+env:
+  - NODE_ENV=g++-8.9.3
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-8.9.3
