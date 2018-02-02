@@ -19,7 +19,7 @@ module.exports = function() {
             });
 
             req.flash('error', messages);
-            res.redirect('/signup');
+            res.redirect('/');
           })
           .catch((err) => {
             return next();
@@ -42,7 +42,7 @@ module.exports = function() {
           });
 
           req.flash('error', messages);
-          res.redirect('/');
+          res.redirect('/login');
         })
         .catch((err) => {
           return next();

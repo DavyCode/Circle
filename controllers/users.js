@@ -5,7 +5,7 @@ module.exports = function(_, passport, User) {
     SetRouting : function(router) {
       // GET ROUTES
       router.get('/', this.indexPage);
-      router.get('/signup', this.getSignUp);
+      router.get('/login', this.getLogin);
       router.get('/home', this.homePage);
       router.get('/auth/facebook', this.getFacebookLogin);
       router.get('/auth/facebook/callback', this.facebookLogin);
@@ -14,32 +14,32 @@ module.exports = function(_, passport, User) {
 
 
       //AUTH POST ROUTES
-      router.post('/signup', User.SignUpValidation, this.postSignUp);
-      router.post('/', User.LoginValidation, this.postLogin)
+      router.post('/', User.SignUpValidation, this.postSignUp);
+      router.post('/login', User.LoginValidation, this.postLogin)
     },
 
-    //Login
+    //Signup
     indexPage: function(req, res) {
       const errors = req.flash('error');
-      return res.render('index', {title: 'Circle | Login', messages: errors, hasErrors: errors.length > 0})
+      return res.render('index', {title: 'Circle | Signup', messages: errors, hasErrors: errors.length > 0})
     },
     //Login
     postLogin: passport.authenticate('local.authLogin', {
       successRedirect: '/home',
-      failureRedirect: '/',
+      failureRedirect: '/login',
       failureFlash: true
     }),
 
-    //Signup
-    getSignUp: function(req, res) {
+    //Login
+    getLogin: function(req, res) {
       const errors = req.flash('error');
-      return res.render('auth/signup', {title: 'Circle | SignUp', messages: errors, hasErrors: errors.length > 0});
+      return res.render('auth/login', {title: 'Circle | Login', messages: errors, hasErrors: errors.length > 0});
     },
 
     //Signup  
     postSignUp: passport.authenticate('local.auth', {
       successRedirect: '/home',
-      failureRedirect: '/signup',
+      failureRedirect: '/',
       failureFlash: true
     }),
 
@@ -50,7 +50,7 @@ module.exports = function(_, passport, User) {
 
     facebookLogin: passport.authenticate('facebook', {
       successRedirect: '/home',
-      failureRedirect: '/signup',
+      failureRedirect: '/login',
       failureFlash: true
     }),
 
@@ -64,7 +64,7 @@ module.exports = function(_, passport, User) {
 
     googleLogin: passport.authenticate('google', {
       successRedirect: '/home',
-      failureRedirect: '/signup',
+      failureRedirect: '/login',
       failureFlash: true
     }),
 
