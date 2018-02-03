@@ -5,6 +5,9 @@ const dependable = require('dependable'),
 const simpleDependencies = [
   ['_', 'lodash'],
   ['passport','passport'], 
+  ['formidable', 'formidable'],
+  ['Group', './models/groups'],
+  ['aws', './helpers/AWSUpload']
 ];
 
 simpleDependencies.forEach((val) => {
