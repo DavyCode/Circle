@@ -24,6 +24,7 @@ passport.use('local.auth', new LocalStrategy({
     if(err){
       return done(err);
     }
+    
     if(user){
       return done(null, false, req.flash('error', 'User with the given email already exist'))
     }

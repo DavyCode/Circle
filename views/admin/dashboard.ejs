@@ -1,0 +1,74 @@
+<% include ../partials/header%>
+
+<body>
+<% include ../partials/nav%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" style=" padding: 10px">
+            <form action="/dashboard" method="POST">         
+                <div class="form-group">
+                    <div class="md-form">
+                        <input type="text" name="groupname" class="input-alternate" placeholder="Group Name">
+                    </div>              
+                </div>
+                <div class="form-group">
+                    <div class="md-form">
+                        <input type="text" name="category" class="input-alternate" placeholder="Category">
+                    </div>              
+                </div>
+                <div class="file-field">
+                        <input type="file" name="upload" id="upload_file"  style="display: inline">           
+                </div>
+                <div class="form-group">
+                        <div class="btn btn-primary btn-sm" id="upload_btn"><span> Upload file</span></div>      
+                </div>
+                <button class="btn  btn-primary waves-effect waves-light" type="submit" name="action" style="display:inline">Create Group
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>  
+    </div>
+</div>
+
+
+
+
+
+
+                            
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<script>
+    $(".alert").alert();
+</script> -->
+
+  
+<% include ../partials/footer%>
+
+<script src="/async/upload.js"></script>
+  
+  
+  
+</body>
+</html>

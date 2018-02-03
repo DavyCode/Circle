@@ -1,83 +1,157 @@
-<% include ./partials/header%>
+<html lang="en" class="full-height">              
+<% include ./partials/header %>
 
 <body>
-<% include ./partials/nav%>
-<div class="container-fluid">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4" style="border: 2px solid black">
-        <!-- Form register -->
-        <form action="/" method="POST">
-            <p class="h5 text-center mb-4">Login</p>
-            <!-- ALERT MODAL -->
-            <% if(hasErrors) {%>
-                <div>
-                    <div class="alert alert-danger alert-dismissible fade in fade show" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <% _.forEach(messages,function(error){%>
-                            <strong> <%= error %></strong><br>
-                        <% }) %>                    
+<% include ./partials/indexnav %>
+                
+<!--Main Navigation-->
+<header>
+            <!--Intro Section-->
+        <section class="view intro-2 hm-gradient">
+            <div class="full-bg-img">
+                <div class="container flex-center">
+                    <div class="d-flex align-items-center content-height">
+                        <div class="row flex-center pt-5 mt-3">
+                            <div class="col-md-6 text-center text-md-left mb-5">
+                                <div class="white-text">
+                                    <h1 class="h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
+                                    <hr class="hr-light mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+                                    <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
+                                        dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae,
+                                        quisquam iste, maiores. Nulla.</h6>
+                                    <br>
+                                    <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s">Learn more</a>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-6 col-xl-5">
+                                <form action="/" method="POST">
+                                    <!--Form-->
+                                    <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                                        <div class="card-body">
+                                            <!--Header-->
+                                            <div class="text-center">
+                                                <h3 class="white-text">
+                                                    <i class="fa fa-user white-text"></i> Register:</h3>
+                                                <hr class="hr-light">
+                                            </div>
+
+                                             <!-- ALERT MODAL -->
+                            <% if(hasErrors) {%>
+                                <div>
+                                    <div class="alert alert-danger alert-dismissible fade in fade show" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <% _.forEach(messages,function(error){%>
+                                            <strong> <%= error %></strong><br>
+                                        <% }) %>                    
+                                    </div>
+                                </div>
+                            <%}%>
+        
+                                            <!--Body-->
+                                            <div class="md-form">
+                                                <i class="fa fa-user prefix white-text"></i>
+                                                <input name="username" type="text" id="form3" class="form-control">
+                                                <label for="form3">Your name</label>
+                                            </div>
+                                            <div class="md-form">
+                                                <i class="fa fa-envelope prefix white-text"></i>
+                                                <input name="email" type="text" id="form2" class="form-control">
+                                                <label for="form2">Your email</label>
+                                            </div>
+        
+                                            <div class="md-form">
+                                                <i class="fa fa-lock prefix white-text active"></i>
+                                                <input  name="password" type="password" id="form4" class="form-control">
+                                                <label for="form4">Your password</label>
+                                            </div>
+        
+                                            <div class="text-center">
+                                                <button class="btn btn-indigo">Sign up</button>
+                                                <hr class="hr-light mb-3 mt-4">
+
+                                                <div class="row d-flex justify-content-center">
+                                                    <p class="font-small white-text mb-2 pt-3"> Sign in with:</p>
+                                                </div>
+                                            <div class="inline-ul text-center d-flex justify-content-center">
+                                                <!--Facebook-->
+                                                <span style="padding:10px"><a  href="/auth/facebook" class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg"> </i></a></span>
+                                                <!--Twitter-->
+                                                <span style="padding:10px"><a href="/auth/twitter" class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg"> </i></a></span>
+                                                <!--Google +-->
+                                                <span style="padding:10px"><a href="/auth/google" class="icons-sm gplus-ic"><i class="fa fa-google-plus white-text fa-lg"> </i></a></span>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </form>
+                                    <!--/.Form-->
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-            <%}%>
-
-            <div class="md-form">
-                <i class="fa fa-envelope prefix grey-text"></i>
-                <input  name="email" type="text" id="orangeForm-email" class="form-control">
-                <label for="orangeForm-email">Your email</label>
             </div>
-
-            <div class="md-form">
-                <i class="fa fa-lock prefix grey-text"></i>
-                <input name="password" type="password" id="orangeForm-pass" class="form-control">
-                <label for="orangeForm-pass">Your password</label>
-            </div>
-
-            <div class="text-center">
-                <span><a href="/signup">Don't have an account?</a></span>
-                <button class="btn btn-deep-orange">Login</button>
-            </div>
-
-        </form>
-        <!-- Form register -->
-
-
-
-        <!--Footer-->
-        <div class="footer pt-3 mdb-color lighten-3">
-            <div class="row d-flex justify-content-center">
-                <p class="font-small white-text mb-2 pt-3"> Login with:</p>
-            </div>
-            <div class="row mt-2 mb-3 d-flex justify-content-center">
-                <!--Facebook-->
-                <span style="padding:10px"><a  href="/auth/facebook" class="icons-sm fb-ic"><i class="fa fa-facebook white-text fa-lg"> </i></a></span>
-                <!--Twitter-->
-                <span style="padding:10px"><a href="/auth/twitter" class="icons-sm tw-ic"><i class="fa fa-twitter white-text fa-lg"> </i></a></span>
-                <!--Google +-->
-                <span style="padding:10px"><a href="/auth/google" class="icons-sm gplus-ic"><i class="fa fa-google-plus white-text fa-lg"> </i></a></span>
-            </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  
-
-</div>
-  
+        </section>
+    
+    </header>
+    <!--Main Navigation-->
+                    
 
 
 
 
 
 
-<script>
-  $(".alert").alert();
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =============================================== -->
+
+
+
+
+
+
+
+
 
 
 <% include ./partials/footer%>
 
+<script>
+        $(".alert").alert();
+ </script>
+
+</body>
+</html>

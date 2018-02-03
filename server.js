@@ -14,7 +14,10 @@ const express = require('express'),
       PORT = process.env.PORT || keys.Port;
 
 
-container.resolve(function(users, _) {
+
+
+
+container.resolve(function(users, _, admin) {
 
     mongoose.Promise = global.Promise;
     mongoose.connect(keys.mongoURI, (err) => {
@@ -35,6 +38,7 @@ container.resolve(function(users, _) {
         //SETUP ROUTER
       const router = require('express-promise-router')();
       users.SetRouting(router);
+      admin.SetRouting(router);
 
       app.use(router);
     }
