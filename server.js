@@ -17,7 +17,7 @@ const express = require('express'),
 
 
 
-container.resolve(function(users, _, admin) {
+container.resolve(function(users, _, admin, home) {
 
     mongoose.Promise = global.Promise;
     mongoose.connect(keys.mongoURI, (err) => {
@@ -39,9 +39,14 @@ container.resolve(function(users, _, admin) {
       const router = require('express-promise-router')();
       users.SetRouting(router);
       admin.SetRouting(router);
+      home.SetRouting(router);
 
       app.use(router);
     }
+
+
+
+
 
 
     function ConfigureExpress(app) {
