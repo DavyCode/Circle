@@ -9,15 +9,16 @@ const express = require('express'),
       mongoose = require('mongoose'),
       flash = require('connect-flash'),
       passport = require('passport'),
+      socketIO = require('socket.io'),
       container = require('./container'),
       keys = require('./config/keys'),
       PORT = process.env.PORT || keys.Port;
 
 
+const {Usersobject} = require('./helpers/UsersClass');
 
 
-
-container.resolve(function(users, _, admin, home) {
+container.resolve(function(users, _, admin, home, group) {
 
     mongoose.Promise = global.Promise;
     mongoose.connect(keys.mongoURI, (err) => {
@@ -27,19 +28,25 @@ container.resolve(function(users, _, admin, home) {
     const app = SetupExpress();
   
     function SetupExpress() {
-      const app = express();
-      const server = http.createServer(app);
-      server.listen(PORT, () => {
-        console.log(`***Server up on port ${PORT}***`)
-      });
-      //invoke configure express
-      ConfigureExpress(app);
+        const app = express();
+        const server = http.createServer(app);
+        const io = socketIO(server);
+
+        server.listen(PORT, () => {
+          console.log(`***Server up on port ${PORT}***`)
+        });
+        //invoke configure express
+        ConfigureExpress(app);
+         //socket
+        require('./socket/group-socket-server')(io, Usersobject);
+
 
         //SETUP ROUTER
-      const router = require('express-promise-router')();
-      users.SetRouting(router);
-      admin.SetRouting(router);
-      home.SetRouting(router);
+        const router = require('express-promise-router')();
+        users.SetRouting(router);
+        admin.SetRouting(router);
+        home.SetRouting(router);
+        group.SetRouting(router);
 
       app.use(router);
     }

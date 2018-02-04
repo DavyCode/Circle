@@ -17,7 +17,6 @@ module.exports = function(async, Group, _){
 
                 function(callback){
                   Group.aggregate([ { $group: { _id: '$category'} } ], (err, newResult) => {
-                    console.log(newResult, '***')
                       callback(err, newResult);
                   })
                 }

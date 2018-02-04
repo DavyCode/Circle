@@ -1,0 +1,158 @@
+<% include ./partials/header%>
+
+<body>
+<% include ./partials/nav%>
+
+<h1>Group</h1>
+
+
+<%= group %>
+
+
+
+
+
+
+ 
+
+<div class="container">
+  <div class="row">
+
+    <!-- number of users online -->
+    <div class="col-md-4">
+        <div >
+            Members Online <span id="numOnline"></span>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- mesage area -->
+    <div class="col-md-4">  
+   
+        <div class="chat_area">
+            <ul id="list-of-messages" class="message-list">
+                <!-- <li class="left">
+                    <span class=" pull-left">
+                      <img src="http://placehold.it/300x300" class="image-circle" alt="">
+                    </span>
+                    <div class="chat-body">
+                        <span class="sender-name"> <%= user.username || user.fullname %></span>
+                        <br>
+                        <hr>
+
+                    </div>
+                </li> -->
+            </ul>
+            
+            <!-- mustache template -->
+            <script id="message-template" type="text">
+                <li class="left">
+                    <span class=" pull-left">
+                      <img src="http://via.placeholder.com/300x300" class="image-circle" alt="">
+                    </span>
+                    <div class="chat-body">
+                        <span class="sender-name"> {{ sender}} </span>
+                        <br>
+                        <hr>
+                        {{ text }}
+
+                    </div>
+                </li> 
+            </script>
+
+        </div>
+
+      <form id="chat-form" method="post">
+          <input type="hidden" id="groupName" value="<%= group.groupname %>" >
+          <input type="hidden" id="sender" value="<%= user.username || user.fullname %>" >
+          <div class="form-group">
+              <label for=""></label>
+              <textarea id="chat-message" class="form-control" name="" id="" rows="3"></textarea>         
+          </div>
+          <div class="clearfix"></div>
+          <!-- <div class="form-group"> -->
+              <button id="chat-button" type="submit" class="btn btn-md btn-dark waves-effect waves-light" name="action">Submit</button>
+          <!-- </div> -->
+      </form>
+
+    </div>
+
+    <!-- display list of users -->
+    <div class="col-md-4">
+        <div id="users">
+            <!-- dynamic content -->
+        </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- ==================================================== -->
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+        <!-- <h4 class="modal-title" id="modelTitleId">Modal title</h4> -->
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+               <input name="" id="" class="btn  btn-sm btn-dark" type="button" value="Viev Profile">
+            </div>
+            <div class="col-md-6">
+                <input name="" id="" class="btn btn-sm btn-light" type="button" value="Add Friend">
+             </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<% include ./partials/footer%>
+<script src="/socket.io/socket.io.js"></script>
+<!-- <script src="./../js/group/group-socket-client.js"></script> -->
+<script src="/js/group/group-socket-client.js"></script>
+
+<script src="/js/mustache.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+<script>
+    $('#exampleModal').on('show.bs.modal', event => {
+      var button = $(event.relatedTarget);
+      var modal = $(this);
+      // Use above variables to manipulate the DOM
+      
+    });
+  </script>
+  
+</body>
+</html>
+
