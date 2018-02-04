@@ -9,7 +9,8 @@ $(document).ready(function(){
          console.log('New user connection');
 
          var params = {
-           room: chatRoom
+           room: chatRoom,
+           name: sender
          }
 
          //emit join message to a group
@@ -17,6 +18,21 @@ $(document).ready(function(){
             console.log('New user joined channel', chatRoom);
          });
      });
+
+     //
+     socket.on('usersList', function(users) {
+       console.log(users)
+       var ol = $('<ol></ol>');
+
+       for(var i = 0; i < users.length; i += 1){
+          ol.append('<p> <a id="val" data-toggle="modal" data-target="#modelId">'+users[i]+'</a></p>')
+       }
+
+       
+       $('#users').html(ol);
+       $('#numOnline').text('('+users.length+')');
+     })
+
 
     //listen for new message
     socket.on('newMessage', function(data){

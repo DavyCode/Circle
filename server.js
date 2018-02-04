@@ -15,7 +15,7 @@ const express = require('express'),
       PORT = process.env.PORT || keys.Port;
 
 
-
+const {Usersobject} = require('./helpers/UsersClass');
 
 
 container.resolve(function(users, _, admin, home, group) {
@@ -37,9 +37,9 @@ container.resolve(function(users, _, admin, home, group) {
         });
         //invoke configure express
         ConfigureExpress(app);
+         //socket
+        require('./socket/group-socket-server')(io, Usersobject);
 
-      //socket
-        require('./socket/group-socket-server')(io);
 
         //SETUP ROUTER
         const router = require('express-promise-router')();
