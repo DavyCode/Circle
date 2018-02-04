@@ -20,7 +20,13 @@ $(document).ready(function(){
 
     //listen for new message
     socket.on('newMessage', function(data){
-        console.log(data);
+        var template = $('#message-template').html();
+        var incomingMessage = Mustache.render(template, {
+            text: data.text,
+            sender: data.from
+        });
+
+        $('#list-of-messages').append(incomingMessage)
     });
 
 
