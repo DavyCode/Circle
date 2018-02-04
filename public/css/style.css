@@ -1,0 +1,64 @@
+/* .pager-section .pager-container ul li a {
+  display: inline-block;
+  position: relative;
+}
+a.xh-button.larger {
+  line-height: 53px;
+}
+.xh-button.red {
+  border-color: #e34449;
+  background: #e34449;
+  color: #fff;
+}
+.xh-button.larger {
+  height: 55px;
+  min-width: 82.5px;
+  padding: 0 30px;
+  font-size: 18px;
+  border-radius: 28px;
+}
+a.xh-button {
+  display: inline-block;
+  line-height: 28px;
+}
+.xh-button {
+  position: relative;
+  padding: 0 15px;
+  min-width: 45px;
+  height: 30px;
+  border: 1px solid #ccc;
+      border-top-color: rgb(204, 204, 204);
+      border-right-color: rgb(204, 204, 204);
+      border-bottom-color: rgb(204, 204, 204);
+      border-left-color: rgb(204, 204, 204);
+  background: #ccc;
+  color: #8c8c8c;
+  text-align: center;
+  text-decoration: none !important;
+  font-size: 14px;
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+  line-height: 100%;
+  border-radius: 14px;
+}
+a {
+  color: #303030;
+  text-decoration: none;
+  cursor: pointer !important;
+}
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+.pager-section .pager-container ul li, .pager-section .pager-container ul ol, .pager-section .pager-container ul ul {
+  list-style: none inside;
+}
+li, ul {
+  list-style: none;
+} */

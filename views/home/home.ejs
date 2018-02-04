@@ -1,0 +1,85 @@
+<% include ../partials/header%>
+
+<body>
+<% include ../partials/nav%>
+
+<div class="jumbotron">
+    <h1 class="display-3">Social Circle</h1>
+    <p class="lead">Connect with like minded people</p>
+    <hr class="my-2">
+    <p>Build your connect, meet someone new</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="" role="button">Circle</a>
+    </p>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+  
+          <form class="form-inline">
+              <div class="form-group">
+                <label for=""></label>
+                <input type="search" name="" id="" class="input-alternate" placeholder="" aria-describedby="helpId">
+              </div>
+              <div class="form-group">
+                <button type="button" name="" id="" class="btn btn-light btn-sm btn-block">Search</button>
+              </div>
+          </form>
+
+          <div class="form-group">
+              <label for=""></label>
+              <select class="form-control form-control-{3:sm|lg}" name="" id="">
+                  <option>Filter By Category</option>
+                  <% _.forEach(category, function(data){%>
+                       <option value="<%= data._id%>"><%= data._id %></option>
+                  <%})%>
+              </select>
+          </div>
+     
+        <% _.forEach(data, function(foundData){ %>  
+
+            <% _.forEach(foundData, function(data){ %>
+            <div class="card-columns">
+              
+              <div class="card">
+                <img class="card-img-top" src="https://s3.eu-west-2.amazonaws.com/social-circle-app/<%= data.image%>" alt="">
+                <div class="card-body">
+                  <h4 class="card-title"><a href="#"><%= data.groupname%></a></h4>
+                  <p class="card-text"><%= data.category%></p>
+                  <button type="button" name="" id="" class="btn btn-light btn-sm btn-block">Add to Fav</button>
+                </div>
+              </div>     
+            </div>
+            <%})%>
+        
+        <%})%>
+
+
+        
+        </div>
+      </div>
+    </div>
+
+
+<% include ../partials/footer%>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+

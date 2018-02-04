@@ -9,6 +9,8 @@
   "author": "Azemoh Paul",
   "license": "MIT",
   "dependencies": {
+    "async": "^2.6.0",
+    "aws-sdk": "^2.98.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
@@ -29,8 +31,5 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0"
-  },
-  "devDependencies": {
-    "aws-sdk": "^2.98.0"
   }
 }
