@@ -3,6 +3,7 @@ module.exports = function(async, Group, _){
   return {
     SetRouting: function(router){
         router.get('/home', this.homePage);
+
     },
           //ROUTE FUNCTIONS
 
@@ -16,9 +17,9 @@ module.exports = function(async, Group, _){
                 },
 
                 function(callback){
-                  Group.aggregate([ { $group: { _id: '$category'} } ], (err, newResult) => {
-                      callback(err, newResult);
-                  })
+                    Group.aggregate([ { $group: { _id: '$category'} } ], (err, newResult) => {
+                        callback(err, newResult);
+                    })
                 }
               ], (err, results) => {
                   const foundResult = results[0];

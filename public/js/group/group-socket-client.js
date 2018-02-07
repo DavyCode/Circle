@@ -21,17 +21,24 @@ $(document).ready(function(){
 
      //
      socket.on('usersList', function(users) {
-       console.log(users)
-       var ol = $('<ol></ol>');
+            console.log(users)
+            var ol = $('<ol></ol>');
 
-       for(var i = 0; i < users.length; i += 1){
-          ol.append('<p> <a id="val" data-toggle="modal" data-target="#modelId">'+users[i]+'</a></p>')
-       }
+            for(var i = 0; i < users.length; i += 1){
+                ol.append('<p> <a id="val" data-toggle="modal" data-target="#modelId">'+users[i]+'</a></p>')
+            };
 
-       
-       $('#users').html(ol);
-       $('#numOnline').text('('+users.length+')');
-     })
+            //display username on modal
+            $(document).on('click', '#val', function(){
+                $('#name').text('@'+$(this).text());
+
+                $('#receiverName').val($(this).text());
+                $('#profile-link').attr("href", "/profile/" + $(this).text());
+            });
+            
+            $('#users').html(ol);
+            $('#numOnline').text('('+users.length+')');
+     });
 
 
     //listen for new message

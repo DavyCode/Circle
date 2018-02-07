@@ -23,7 +23,7 @@ passport.use(new GoogleStrategy({
   passReqToCallback: true
 
 }, (req, accessToken, refreshToken, profile, done) => {
-
+    console.log(profile, '**GOOGLE**')
     User.findOne({google: profile.id}, (err, user) => {
         if(err){
           return done(err);

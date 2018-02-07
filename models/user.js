@@ -2,26 +2,26 @@ const mongoose = require('mongoose'),
       bcrypt = require('bcrypt-nodejs');
 
 const userSchema = mongoose.Schema({
-  username: { type: String},
-  fullname: { type: String, default: ''},
-  email: { type: String, unique: true},
-  password: {  type: String, default: ''},
-  userImage: { type: String,default: 'default.png'},
-  facebook: { type: String, default: ''},
-  fbTokens: Array,
-  google: {type: String, default: ''},
-  sentRequest: [{
-    username: {type: String, default: ''}
-  }],
-  request: [{
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    username: { type: String, default: ''}
-  }],
-  friendList: [{
-    friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    friendName: { type: String, default: ''}
-  }],
-  totalRequest: {type: Number, default: 0}
+    username: { type: String, default: 'Person Default'},
+    fullname: { type: String, default: 'Person Default'},
+    email: { type: String, unique: true},
+    password: {  type: String, default: ''},
+    userImage: { type: String,default: 'default.png'},
+    facebook: { type: String, default: ''},
+    fbTokens: Array,
+    google: {type: String, default: ''},
+    sentRequest: [{
+      username: {type: String, default: ''}
+    }],
+    request: [{
+      userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+      username: {type: String, default: ''}
+    }],
+    friendsList: [{
+      friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+      friendName: { type: String, default: ''}
+    }],
+    totalRequest: {type: Number, default: 0}
 
 });
 
