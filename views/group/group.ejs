@@ -6,14 +6,10 @@
 <h1>Group</h1>
 
 
-<%= group %>
+<%= groupName %>
 
 
 
-
-
-
- 
 
 <div class="container">
   <div class="row">
@@ -62,12 +58,12 @@
                     </div>
                 </li> 
             </script>
-
+            
         </div>
 
       <form id="chat-form" method="post">
-          <input type="hidden" id="groupName" value="<%= group.groupname %>" >
-          <input type="hidden" id="sender" value="<%= user.username || user.fullname %>" >
+          <input type="hidden" id="groupName" value="<%= groupName %>" >
+          <input type="hidden" id="sender" value="<%= user.username %>" >
           <div class="form-group">
               <label for=""></label>
               <textarea id="chat-message" class="form-control" name="" id="" rows="3"></textarea>         
@@ -105,19 +101,29 @@
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> -->
-        <!-- <h4 class="modal-title" id="modelTitleId">Modal title</h4> -->
+        <h5 class="modal-title pull-left" id="name"></h5>
       </div>
       <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6">
-               <input name="" id="" class="btn  btn-sm btn-dark" type="button" value="Viev Profile">
+        <form action="" method="post" id="add-friendRequest">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                  <input type="" id="receiverName" name="receiverName" value="" >
+              </div>
+              <div class="col-md-6">
+                  <input type="" id="sender-name" name="sender-name" value="<%= user.username %>" >
+              </div>
+
+              <div class="col-md-6">
+                <a id="profile-link" class="btn  btn-sm btn-dark">Viev Profile</a>
+              </div>
+              <div class="col-md-6">
+                  <!-- <a  id="" class="btn btn-sm btn-light" type="submit">Add Friend</a>   -->
+                  <button type="submit" class="btn btn-sm btn-light">Add friend</button>              
+              </div>
             </div>
-            <div class="col-md-6">
-                <input name="" id="" class="btn btn-sm btn-light" type="button" value="Add Friend">
-             </div>
           </div>
-        </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
@@ -139,7 +145,8 @@
 <script src="/socket.io/socket.io.js"></script>
 <!-- <script src="./../js/group/group-socket-client.js"></script> -->
 <script src="/js/group/group-socket-client.js"></script>
-
+<script src="/js/group/request-client.js"></script>
+ 
 <script src="/js/mustache.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>

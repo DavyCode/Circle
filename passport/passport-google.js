@@ -23,7 +23,7 @@ passport.use(new GoogleStrategy({
   passReqToCallback: true
 
 }, (req, accessToken, refreshToken, profile, done) => {
-
+    console.log(profile, '**GOOGLE**')
     User.findOne({google: profile.id}, (err, user) => {
         if(err){
           return done(err);
@@ -34,6 +34,7 @@ passport.use(new GoogleStrategy({
 
           const newUser = new User();
           newUser.google = profile.id;
+          newUser.username = profile.displayName;
           newUser.fullname = profile.displayName;
           newUser.email = profile.emails[0].value;
           newUser.userImage = profile._json.image.url;

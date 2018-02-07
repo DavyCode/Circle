@@ -39,6 +39,7 @@ container.resolve(function(users, _, admin, home, group) {
         ConfigureExpress(app);
          //socket
         require('./socket/group-socket-server')(io, Usersobject);
+        require('./socket/request-server')(io);
 
 
         //SETUP ROUTER
