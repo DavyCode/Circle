@@ -34,7 +34,7 @@ module.exports = function(async, Group, _){
 
                   const categorySort = _.sortBy(aggregateResult, '_id');
 
-                  return res.render('home/home', {title: 'Circle - Home', data: dataChunk, category: categorySort})
+                  return res.render('home/home', {title: 'Circle - Home', data: dataChunk, user:req.user, category: categorySort})
                 }
             )   
         }
