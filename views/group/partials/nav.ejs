@@ -1,35 +1,101 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark indigo">
-    <a class="navbar-brand" href="/">
-         <!-- <i id="icon" class="fa fa-adjust" style="text-shadow: rgb(179, 84, 118) 0px 0px 0px, rgb(184, 86, 122) 1px 1px 0px, rgb(189, 89, 125) 2px 2px 0px, rgb(194, 91, 128) 3px 3px 0px, rgb(199, 94, 132) 4px 4px 0px, rgb(204, 96, 135) 5px 5px 0px, rgb(209, 98, 139) 6px 6px 0px, rgb(214, 101, 142) 7px 7px 0px, rgb(219, 103, 145) 8px 8px 0px, rgb(224, 106, 149) 9px 9px 0px, rgb(230, 108, 152) 10px 10px 0px, rgb(235, 110, 155) 11px 11px 0px, rgb(240, 113, 159) 12px 12px 0px, rgb(245, 115, 162) 13px 13px 0px, rgb(250, 118, 166) 14px 14px 0px; font-size: 195px; color: rgb(255, 255, 255); height: 385px; width: 385px; line-height: 385px; border-radius: ; text-align: center; background-color: rgb(255, 120, 169);"></i>  -->
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-        aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link Sign up" href="/">Register</a>
-            </li>
-        </ul>
-        <ul class="nav nav-pill pull-right">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:aliceblue"> <%= user.username %> </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider">hey</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                </div>
-            </li>
-        </ul>
+    <div class="container">
+
+
+        <a class="navbar-brand" href="/">
+            <!-- <i id="icon" class="fa fa-adjust" style="text-shadow: rgb(179, 84, 118) 0px 0px 0px, rgb(184, 86, 122) 1px 1px 0px, rgb(189, 89, 125) 2px 2px 0px, rgb(194, 91, 128) 3px 3px 0px, rgb(199, 94, 132) 4px 4px 0px, rgb(204, 96, 135) 5px 5px 0px, rgb(209, 98, 139) 6px 6px 0px, rgb(214, 101, 142) 7px 7px 0px, rgb(219, 103, 145) 8px 8px 0px, rgb(224, 106, 149) 9px 9px 0px, rgb(230, 108, 152) 10px 10px 0px, rgb(235, 110, 155) 11px 11px 0px, rgb(240, 113, 159) 12px 12px 0px, rgb(245, 115, 162) 13px 13px 0px, rgb(250, 118, 166) 14px 14px 0px; font-size: 195px; color: rgb(255, 255, 255); height: 385px; width: 385px; line-height: 385px; border-radius: ; text-align: center; background-color: rgb(255, 120, 169);"></i>  -->
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link Sign up" href="/">Register</a>
+                </li>
+            </ul>
+
+            <ul class="nav nav-pill pull-right right">
+                <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon fa fa-bell nav-glyphicon"></span><b class="caret"></b>
+                        <span class="label label-primary nav-label-icon">2</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="container">
+                                <div class="row" style="background-color:h; color:black">
+                                    <div class="col-md-12">
+                                        <div class="dropdown-tag">
+                                            <h6 class="text-center dropdown-tag-head">
+                                                Friend Requests
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-divider"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-center">
+                                            <img src="https://placehold.it/50x50" class="img-circle img-responsive dropdown-img" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-6 col-xs-6">
+                                            <button type="button" class="btn btn-sm btn-success"><i class="fa fa-check" aria-hidden="true"></i> Accept</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-5 col-xs-6">
+                                            <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- ============================================= -->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:aliceblue">
+                        <%= user.username || user.fullname %>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider">hey</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </nav>
-                
+
+
+<!-- <div class="row">
+    <div class="col-md-6 col-sm-6">
+        <button type="button" class="btn btn-sm btn-success"></button>
+    </div>
+    <div class="col-md-6 col-sm-6">
+        <button type="button" class="btn btn-sm btn-danger"></button>
+    </div>
+</div> -->
