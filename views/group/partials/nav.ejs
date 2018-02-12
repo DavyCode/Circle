@@ -22,11 +22,16 @@
                 </li>
             </ul>
 
-            <ul class="nav nav-pill pull-right right">
+            <ul class="nav nav-pill pull-right right" id="reload">
                 <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon fa fa-bell nav-glyphicon"></span><b class="caret"></b>
-                        <span class="label label-primary nav-label-icon">2</span>
+                        <% if(data.totalRequest > 0) {%>
+                            <span class="label label-primary nav-label-icon"> <%= data.totalRequest%></span>
+                            <% }else{ %>
+                                <span class="label label-primary nav-label-icon" style="display:none">2</span>
+                                <% } %>
+
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -40,35 +45,59 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="dropdown-divider"></div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-center">
-                                            <img src="https://placehold.it/50x50" class="img-circle img-responsive dropdown-img" />
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="dropdown-divider"></div>
                         </li>
+
+                        <div class="dropdown-divider"></div>
+
                         <li>
-                            <div class="dropdown-item">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-5 col-sm-6 col-xs-6">
-                                            <button type="button" class="btn btn-sm btn-success"><i class="fa fa-check" aria-hidden="true"></i> Accept</button>
+                            <% if(data.totalRequest > 0) {%>
+                                <% _.forEach(data.request, function(request) {%>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-center">
+                                                            <img src="https://placehold.it/50x50" class="img-circle img-responsive dropdown-img" />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-9 pleft-0">
+                                                <div class="dropdown-item">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-12">
+                                                                    <p class="text-left">
+                                                                        <strong> <%= data.username %></strong>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                                    <button type="button" class="btn btn-sm btn-success"> Accept</button>
+                                                                    <!--<i class="fa fa-check" aria-hidden="true"></i> -->
+                                                                </div>
+                                                                <div class="col-md-6 col-sm-5 col-xs-6">
+                                                                    <button type="button" class="btn btn-sm btn-danger"> Cancel</button>
+                                                                    <!--<i class="fa fa-times" aria-hidden="true"></i> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-5 col-sm-5 col-xs-6">
-                                            <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
+
+                        <% }) %>
+                            <% } else { %>
+                                <p class="text-center"> No Request</p>
+                                <% } %>
                     </ul>
                 </li>
                 <!-- ============================================= -->
@@ -80,7 +109,7 @@
                     <ul class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider">hey</div>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Action</a>
                     </ul>
                 </li>
