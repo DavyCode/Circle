@@ -1,5 +1,5 @@
 node_modules
 .vscode
-.dev
+dev.js
 MDB-Free
 AWSUpload.js
